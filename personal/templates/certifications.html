@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Certifications - My Portfolio{% endblock %}
+
+{% block content %}
+<h2 class="section-title">Certifications</h2>
+<div class="list-group">
+  {% for cert in certifications %}
+    <div class="list-group-item">
+      <h5>{{ cert.name }}</h5>
+      <p>{{ cert.organization }} | Issued: {{ cert.issue_date }}</p>
+      {% if cert.credential_url %}
+        <a href="{{ cert.credential_url }}" target="_blank" class="btn btn-sm btn-info">View Credential</a>
+      {% endif %}
+    </div>
+  {% empty %}
+    <p>No certifications found.</p>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - My Portfolio{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center">
+  {% if profile and profile.profile_image %}
+    <img src="{{ profile.profile_image.url }}" alt="{{ profile.full_name }}" class="img-fluid rounded-circle mb-3" style="width:200px;">
+  {% else %}
+    <img src="https://via.placeholder.com/200" alt="Profile Image" class="img-fluid rounded-circle mb-3">
+  {% endif %}
+  <h1 class="display-4">{{ profile.full_name }}</h1>
+  <p class="lead">{{ profile.bio }}</p>
+</div>
+{% endblock %}

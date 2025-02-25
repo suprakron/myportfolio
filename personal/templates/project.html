@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Projects - My Portfolio{% endblock %}
+
+{% block content %}
+<h2 class="section-title">Projects</h2>
+<div class="row">
+  {% for project in projects %}
+    <div class="col-md-4">
+      <div class="card mb-4">
+        {% if project.image %}
+          <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}">
+        {% else %}
+          <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Project Image">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ project.title }}</h5>
+          <p class="card-text">{{ project.description|truncatewords:20 }}</p>
+          {% if project.github_link %}
+            <a href="{{ project.github_link }}" target="_blank" class="btn btn-sm btn-primary">GitHub</a>
+          {% endif %}
+          {% if project.demo_link %}
+            <a href="{{ project.demo_link }}" target="_blank" class="btn btn-sm btn-success">Demo</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p>No projects found.</p>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Education - My Portfolio{% endblock %}
+
+{% block content %}
+<h2 class="section-title">Education</h2>
+<div class="list-group">
+  {% for edu in education %}
+    <div class="list-group-item">
+      <h5>{{ edu.degree }} at {{ edu.institution }}</h5>
+      <small>{{ edu.start_date }} - {{ edu.end_date|default:"Present" }}</small>
+      <p>{{ edu.description }}</p>
+    </div>
+  {% empty %}
+    <p>No education records found.</p>
+  {% endfor %}
+</div>
+{% endblock %}

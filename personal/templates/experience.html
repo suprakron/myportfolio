@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Experience - My Portfolio{% endblock %}
+
+{% block content %}
+<h2 class="section-title">Experience</h2>
+<div class="list-group">
+  {% for exp in experiences %}
+    <div class="list-group-item">
+      <h5>{{ exp.title }} at {{ exp.company }}</h5>
+      <small>{{ exp.start_date }} - {{ exp.end_date|default:"Present" }}</small>
+      <p>{{ exp.description }}</p>
+    </div>
+  {% empty %}
+    <p>No experience records found.</p>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Gallery - My Portfolio{% endblock %}
+
+{% block content %}
+<h2 class="section-title">Gallery</h2>
+<div class="row">
+  {% for image in images %}
+    <div class="col-md-3 mb-4">
+      <div class="card">
+        <img src="{{ image.image.url }}" class="card-img-top" alt="{{ image.title }}">
+        <div class="card-body text-center">
+          <h6 class="card-title">{{ image.title }}</h6>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p>No images in gallery.</p>
+  {% endfor %}
+</div>
+{% endblock %}
